@@ -18,43 +18,59 @@ namespace TencentCloud\Ssl\V20191205\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * edgeone实例详情 - 异步关联云资源数据结构
+ * cos实例详情 - 异步关联云资源数据结构
  *
- * @method array getInstanceList() 获取edgeone实例详情	
+ * @method string getRegion() 获取地域
 注意：此字段可能返回 null，表示取不到有效值。
- * @method void setInstanceList(array $InstanceList) 设置edgeone实例详情	
+ * @method void setRegion(string $Region) 设置地域
 注意：此字段可能返回 null，表示取不到有效值。
- * @method integer getTotalCount() 获取edgeone实例总数	
- * @method void setTotalCount(integer $TotalCount) 设置edgeone实例总数	
- * @method string getError() 获取是否查询异常
+ * @method array getInstanceList() 获取实例详情
 注意：此字段可能返回 null，表示取不到有效值。
- * @method void setError(string $Error) 设置是否查询异常
+ * @method void setInstanceList(array $InstanceList) 设置实例详情
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method integer getTotalCount() 获取地域下总数
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setTotalCount(integer $TotalCount) 设置地域下总数
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method string getError() 获取错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setError(string $Error) 设置错误信息
 注意：此字段可能返回 null，表示取不到有效值。
  */
-class TeoInstanceList extends AbstractModel
+class COSInstanceList extends AbstractModel
 {
     /**
-     * @var array edgeone实例详情	
+     * @var string 地域
+注意：此字段可能返回 null，表示取不到有效值。
+     */
+    public $Region;
+
+    /**
+     * @var array 实例详情
 注意：此字段可能返回 null，表示取不到有效值。
      */
     public $InstanceList;
 
     /**
-     * @var integer edgeone实例总数	
+     * @var integer 地域下总数
+注意：此字段可能返回 null，表示取不到有效值。
      */
     public $TotalCount;
 
     /**
-     * @var string 是否查询异常
+     * @var string 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
      */
     public $Error;
 
     /**
-     * @param array $InstanceList edgeone实例详情	
+     * @param string $Region 地域
 注意：此字段可能返回 null，表示取不到有效值。
-     * @param integer $TotalCount edgeone实例总数	
-     * @param string $Error 是否查询异常
+     * @param array $InstanceList 实例详情
+注意：此字段可能返回 null，表示取不到有效值。
+     * @param integer $TotalCount 地域下总数
+注意：此字段可能返回 null，表示取不到有效值。
+     * @param string $Error 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
      */
     function __construct()
@@ -70,10 +86,14 @@ class TeoInstanceList extends AbstractModel
         if ($param === null) {
             return;
         }
+        if (array_key_exists("Region",$param) and $param["Region"] !== null) {
+            $this->Region = $param["Region"];
+        }
+
         if (array_key_exists("InstanceList",$param) and $param["InstanceList"] !== null) {
             $this->InstanceList = [];
             foreach ($param["InstanceList"] as $key => $value){
-                $obj = new TeoInstanceDetail();
+                $obj = new CosInstanceDetail();
                 $obj->deserialize($value);
                 array_push($this->InstanceList, $obj);
             }
